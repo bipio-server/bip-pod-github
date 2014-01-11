@@ -1,0 +1,32 @@
+{
+    "name": "bip-pod-github",
+    "version": "0.0.1",
+    "description": "Github Pod for Bipio",
+    "keywords": [
+    "bip",
+    "bipio",
+    "pod",
+    "github"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/bipio-server/bip-pod-github.git"
+    },
+    "bugs": {
+        "url": "http://github.com/bipio-server/bip-pod-github/issues"
+    },
+    "licenses": [
+    {
+        "type": "GNU GPLv3",
+        "url": "http://www.gnu.org/copyleft/gpl.html"
+    }
+    ],
+    "main": ".",
+    "dependencies": {
+        "bip-pod" : ">=0.0.1",
+        "passport-github" : ">=0.1.5"
+    },
+    "engines": {
+        "node": ">= 0.10.0"
+    }
+}
