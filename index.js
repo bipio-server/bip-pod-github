@@ -29,11 +29,12 @@ Github = new Pod({
     "oauth": {
       "clientID" : "",
       "clientSecret" : "",
-      "callbackURL" : "",
+      "callbackURL" : "/rpc/oauth/github/cb",
       "scopes" : [
-      "gist",
-      "notifications",
-      "repo:status",
+        "gist",
+        "notifications",
+        "repo:status",
+        "repo"
       ]
     }
   }
