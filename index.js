@@ -3,7 +3,7 @@
  * The Bipio Github Pod.  Github Actions and Content Emitters
  *
  * @author Michael Pearson <michael@cloudspark.com.au>
- * Copyright (c) 2010-2013 CloudSpark pty ltd http://www.cloudspark.com.au
+ * Copyright (c) 2010-2014 CloudSpark pty ltd http://www.cloudspark.com.au
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,16 +31,23 @@ Github = new Pod({
       "clientSecret" : "",
       "callbackURL" : "/rpc/oauth/github/cb",
       "scopes" : [
-        "gist",
-        "notifications",
-        "repo:status",
-        "repo"
+      "gist",
+      "notifications",
+      "repo:status",
+      "repo"
       ]
     }
-  }
+  },
+  dataSources : [
+    require('./models/track_repos')  
+  ]
 });
 
+
+
 Github.add(require('./issue_create.js'));
+Github.add(require('./get_repositories.js'));
+Github.add(require('./get_repositories_org.js'));
 
 // -----------------------------------------------------------------------------
 module.exports = Github;
