@@ -48,6 +48,7 @@ Github = new Pod({
 Github.add(require('./issue_create.js'));
 Github.add(require('./get_repositories.js'));
 Github.add(require('./get_repositories_org.js'));
+Github.add(require('./get_repository.js'));
 
 // -----------------------------------------------------------------------------
 module.exports = Github;
