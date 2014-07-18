@@ -34,7 +34,8 @@ Github = new Pod({
       "gist",
       "notifications",
       "repo:status",
-      "repo"
+      "repo",
+      "read:org"
       ]
     }
   },
@@ -49,6 +50,10 @@ Github.add(require('./issue_create.js'));
 Github.add(require('./get_repositories.js'));
 Github.add(require('./get_repositories_org.js'));
 Github.add(require('./get_repository.js'));
+Github.add(require('./get_team.js'));
+Github.add(require('./get_org_teams.js'));
+Github.add(require('./add_team_member.js'));
+Github.add(require('./add_team_repo.js'));
 
 // -----------------------------------------------------------------------------
 module.exports = Github;

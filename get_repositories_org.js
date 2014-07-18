@@ -54,6 +54,10 @@ OrgRepoCreated.prototype.getSchema = function() {
     },
     "exports": {
       "properties" : {
+        "organization" : {
+          "type" : "string",
+          "description" : "Organization Name"
+        },
         "id" : {
           "type" : "string",
           "description" : "ID"
