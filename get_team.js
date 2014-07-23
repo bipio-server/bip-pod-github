@@ -46,27 +46,27 @@ GetTeam.prototype.getSchema = function() {
       "properties" : {
         "url" : {
           "type" : "string",
-          "description" : "URL"
+          "description" : "Team URL"
         },
         "name" : {
           "type" : "string",
-          "description" : "Name"
+          "description" : "Team Name"
         },
         "id" : {
           "type" : "string",
-          "description" : "ID"
+          "description" : "Team ID"
         },
         "permission" : {
           "type" : "string",
-          "description" : "Permission"
+          "description" : "Team Permission"
         },
         "repos_count" : {
           "type" : "integer",
-          "description" : "# Repos"
+          "description" : "# Team Repos"
         },
         "members_count" : {
           "type" : "integer",
-          "description" : "# Members"
+          "description" : "# Team Members"
         }        
       }
     }

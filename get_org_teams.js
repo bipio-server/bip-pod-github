@@ -46,15 +46,15 @@ GetOrgTeams.prototype.getSchema = function() {
       "properties" : {
         "url" : {
           "type" : "string",
-          "description" : "URL"
+          "description" : "Org URL"
         },
         "name" : {
           "type" : "string",
-          "description" : "Name"
+          "description" : "Org Name"
         },
         "id" : {
           "type" : "string",
-          "description" : "ID"
+          "description" : "Org ID"
         }
       }
     }
