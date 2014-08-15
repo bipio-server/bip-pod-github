@@ -1,6 +1,7 @@
 {
     "name": "bip-pod-github",
-    "version": "0.0.7",
+    "version": "0.0.8",
+    "author" : "Michael Pearson",
     "description": "Github Pod for Bipio",
     "keywords": [
     "bip",
