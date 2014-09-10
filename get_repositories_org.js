@@ -22,8 +22,8 @@
 
 function OrgRepoCreated(podConfig) {
   this.name = 'new_org_repos';
-  this.description = 'Organization Repository Created',
-  this.description_long = 'A new Organization Repository has been created',
+  this.title = 'Organization Repository Created',
+  this.description = 'A new Organization Repository has been created',
   this.trigger = true; // this action can trigger
   this.singleton = false; // only 1 instance per account (can auto install)
   this.auto = false; // no config, not a singleton but can auto-install anyhow
@@ -40,7 +40,7 @@ OrgRepoCreated.prototype.getSchema = function() {
           "type" :  "string",
           "description" : "Organization Name"
         },
-        
+
         "public_only" : {
           "type" :  "boolean",
           "description" : "Public Repositories only",
@@ -103,7 +103,7 @@ OrgRepoCreated.prototype.getUrl = function(channel, auth) {
   var path = '/user/repos', type = 'public';
 
   if (channel.config.organization && '' !== channel.config.organization) {
-    path = '/orgs/' + channel.config.organization + '/repos'    
+    path = '/orgs/' + channel.config.organization + '/repos'
   }
 
   if (!channel.config.public_only) {
@@ -200,14 +200,14 @@ OrgRepoCreated.prototype.invoke = function(imports, channel, sysImports, content
                   repo_id : repo.id,
                   data : repo
                 };
-                
+
                 var model = dao.modelFactory(modelName, repoStruct);
                 dao.create(model, function(err, result) {
                   if (err) {
                     log(err, channel, 'error');
                   }
                 });
-                next(false, repo);                
+                next(false, repo);
               }
             }
           );

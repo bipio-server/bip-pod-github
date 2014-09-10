@@ -22,8 +22,8 @@
 
 function UserRepoCreated(podConfig) {
   this.name = 'new_user_repos';
-  this.description = 'User Repository Created',
-  this.description_long = 'A new User Repository has been created',
+  this.title = 'User Repository Created',
+  this.description = 'A new User Repository has been created',
   this.trigger = true; // this action can trigger
   this.singleton = false; // only 1 instance per account (can auto install)
   this.auto = false; // no config, not a singleton but can auto-install anyhow

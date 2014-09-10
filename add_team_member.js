@@ -22,8 +22,8 @@
 
 function AddTeamMember(podConfig) {
   this.name = 'add_team_member';
-  this.description = 'Add Team Member',
-  this.description_long = 'Adds a Team Member (username) to an Organization ID',
+  this.title = 'Add Team Member',
+  this.description = 'Adds a Team Member (username) to an Organization ID',
   this.trigger = false;
   this.singleton = true;
   this.auto = false;
@@ -44,7 +44,8 @@ AddTeamMember.prototype.getSchema = function() {
           "type" :  "string",
           "description" : "User Name"
         }
-      }
+      },
+      "required" : [ "id", "username" ]
     },
     "exports": {
       "properties" : {

@@ -22,8 +22,8 @@
 
 function IssueCreate(podConfig) {
   this.name = 'issue_create';
-  this.description = 'Create an Issue',
-  this.description_long = 'Create an Issue for the target repository',
+  this.title = 'Create an Issue',
+  this.description = 'Create an Issue for the target repository',
   this.trigger = false; // this action can trigger
   this.singleton = false; // only 1 instance per account (can auto install)
   this.auto = false; // no config, not a singleton but can auto-install anyhow
@@ -56,7 +56,8 @@ IssueCreate.prototype.getSchema = function() {
           "type" :  "string",
           "description" : "Body"
         }
-      }
+      },
+      "required" : [ "title", "body" ]
     },
     "exports": {
       "properties" : {
@@ -93,12 +94,12 @@ IssueCreate.prototype.invoke = function(imports, channel, sysImports, contentPar
   var pod = this.pod,
     resource = this.$resource,
     url = 'https://api.github.com/repos/' + channel.config.owner + '/' + channel.config.repository + '/issues?access_token=' + sysImports.auth.oauth.token
- 
+
   if (imports.title && imports.body) {
 
     resource._httpPost(
-      url, 
-      {      
+      url,
+      {
         title : imports.title,
         body : imports.body
       },

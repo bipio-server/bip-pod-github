@@ -22,8 +22,8 @@
 
 function GetTeam(podConfig) {
   this.name = 'get_team';
-  this.description = 'Get A Team',
-  this.description_long = 'Fetches A Team By ID',
+  this.title = 'Get A Team',
+  this.description = 'Fetches A Team By ID',
   this.trigger = false;
   this.singleton = true;
   this.auto = false;
@@ -39,8 +39,9 @@ GetTeam.prototype.getSchema = function() {
         "id" : {
           "type" :  "string",
           "description" : "Team ID"
-        }      
-      }
+        }
+      },
+      "required" : [ "id" ]
     },
     "exports": {
       "properties" : {
@@ -67,24 +68,24 @@ GetTeam.prototype.getSchema = function() {
         "members_count" : {
           "type" : "integer",
           "description" : "# Team Members"
-        }        
+        }
       }
     }
   }
 }
 
-GetTeam.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {  
+GetTeam.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
     pod = this.pod,
     resource = this.$resource,
     dao = resource.dao,
     log = resource.log,
     url;
-    
+
   if (imports.id) {
     url = 'https://api.github.com/teams/'+ imports.id +'?access_token=' + sysImports.auth.oauth.token;
     resource._httpGet(url, function(err, repo, headers) {
-      next(err, repo);      
+      next(err, repo);
     });
   }
 }

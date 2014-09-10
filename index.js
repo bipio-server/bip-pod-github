@@ -21,8 +21,8 @@
 var Pod = require('bip-pod'),
 Github = new Pod({
   name : 'github',
-  description : 'Github',
-  description_long : 'GitHub is a web-based hosting service for software development projects that use the Git revision control system',
+  title : 'Github',
+  description : 'GitHub is a web-based hosting service for software development projects that use the Git revision control system',
   authType : 'oauth',
   passportStrategy : require('passport-github').Strategy,
   config : {
@@ -40,7 +40,7 @@ Github = new Pod({
     }
   },
   dataSources : [
-    require('./models/track_repos')  
+    require('./models/track_repos')
   ]
 });
 

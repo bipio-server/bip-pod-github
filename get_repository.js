@@ -22,8 +22,8 @@
 
 function Repo(podConfig) {
   this.name = 'get_repository';
-  this.description = 'Get Repository Attributes',
-  this.description_long = 'Fetches attributes for a given repository',
+  this.title = 'Get Repository Attributes',
+  this.description = 'Fetches attributes for a given repository',
   this.trigger = false; // this action can trigger
   this.singleton = false; // only 1 instance per account (can auto install)
   this.auto = false; // no config, not a singleton but can auto-install anyhow
@@ -44,8 +44,9 @@ Repo.prototype.getSchema = function() {
         "repo" : {
           "type" :  "string",
           "description" : "Repo Name"
-        }      
-      }
+        }
+      },
+      "required" : [ "owner", "repo" ]
     },
     "exports": {
       "properties" : {
@@ -90,18 +91,18 @@ Repo.prototype.getSchema = function() {
   }
 }
 
-Repo.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {  
+Repo.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
     pod = this.pod,
     resource = this.$resource,
     dao = resource.dao,
     log = resource.log,
     url;
-    
+
   if (imports.owner && imports.repo) {
     url = 'https://api.github.com/repos/'+ imports.owner +'/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
     resource._httpGet(url, function(err, repo, headers) {
-      next(err, repo);      
+      next(err, repo);
     });
   }
 }

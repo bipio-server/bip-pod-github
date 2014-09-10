@@ -22,8 +22,8 @@
 
 function GetOrgTeams(podConfig) {
   this.name = 'get_org_teams';
-  this.description = 'Get Teams For Organization',
-  this.description_long = 'Fetches All Teams for a given Organization',
+  this.title = 'Get Teams For Organization',
+  this.description = 'Fetches All Teams for a given Organization',
   this.trigger = false;
   this.singleton = true;
   this.auto = false;
@@ -39,8 +39,9 @@ GetOrgTeams.prototype.getSchema = function() {
         "organization" : {
           "type" :  "string",
           "description" : "Organization Name"
-        }      
-      }
+        }
+      },
+      "required" : [ "organization" ]
     },
     "exports": {
       "properties" : {
@@ -61,18 +62,18 @@ GetOrgTeams.prototype.getSchema = function() {
   }
 }
 
-GetOrgTeams.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {  
+GetOrgTeams.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
     pod = this.pod,
     resource = this.$resource,
     dao = resource.dao,
     log = resource.log,
     url;
-    
+
   if (imports.organization) {
     url = 'https://api.github.com/orgs/'+ imports.organization +'/teams?access_token=' + sysImports.auth.oauth.token;
     resource._httpGet(url, function(err, repo, headers) {
-      next(err, repo);      
+      next(err, repo);
     });
   }
 }

@@ -22,8 +22,8 @@
 
 function AddTeamRepo(podConfig) {
   this.name = 'add_team_repo';
-  this.description = 'Add Team Repo',
-  this.description_long = 'Adds a Repository to an Organizations Team',
+  this.title = 'Add Team Repo',
+  this.description = 'Adds a Repository to an Organizations Team',
   this.trigger = false;
   this.singleton = true;
   this.auto = false;
@@ -48,7 +48,8 @@ AddTeamRepo.prototype.getSchema = function() {
           "type" :  "string",
           "description" : "Repo Name"
         }
-      }
+      },
+      "required" : [ "id", "repo", "org" ]
     },
     "exports": {
       "properties" : {
