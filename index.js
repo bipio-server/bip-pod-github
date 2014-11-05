@@ -54,6 +54,7 @@ Github.add(require('./get_team.js'));
 Github.add(require('./get_org_teams.js'));
 Github.add(require('./add_team_member.js'));
 Github.add(require('./add_team_repo.js'));
+Github.add(require('./gist_create.js'));
 
 // -----------------------------------------------------------------------------
 module.exports = Github;
