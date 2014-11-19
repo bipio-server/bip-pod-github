@@ -1,0 +1,585 @@
+{
+  "name": "github",
+  "title": "Github",
+  "description": "GitHub is a web-based hosting service for software development projects that use the Git revision control system",
+  "url": "",
+  "trackDuplicates": false,
+  "config": {
+    "oauth": {
+      "clientID": "",
+      "clientSecret": "",
+      "callbackURL": "/rpc/oauth/github/cb",
+      "scopes": [
+        "gist",
+        "notifications",
+        "repo:status",
+        "repo",
+        "read:org"
+      ]
+    }
+  },
+  "auth": {
+    "strategy": "oauth"
+  },
+  "rpcs": {},
+  "actions": {
+    "issue_create": {
+      "title": "Create an Issue",
+      "description": "Create an Issue for the target repository",
+      "trigger": "invoke",
+      "config": {
+        "properties": {
+          "owner": {
+            "type": "string",
+            "description": "Owner Name"
+          },
+          "repository": {
+            "type": "string",
+            "description": "Repository Name"
+          }
+        },
+        "disposition": [
+          "owner",
+          "repository"
+        ]
+      },
+      "exports": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL"
+          },
+          "html_url": {
+            "type": "string",
+            "description": "HTML URL"
+          },
+          "number": {
+            "type": "string",
+            "description": "Number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title"
+          },
+          "body": {
+            "type": "string",
+            "description": "Body"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Created At"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title"
+          },
+          "body": {
+            "type": "string",
+            "description": "Body"
+          }
+        },
+        "required": [
+          "title",
+          "body"
+        ],
+        "disposition": [
+          "title",
+          "body"
+        ]
+      }
+    },
+    "new_user_repos": {
+      "title": "User Repository Created",
+      "description": "A new User Repository has been created",
+      "trigger": "poll",
+      "config": {
+        "properties": {
+          "owner": {
+            "type": "string",
+            "description": "Owner Name, leave blank to track your own repositories"
+          },
+          "public_only": {
+            "type": "boolean",
+            "description": "Public Repositories only",
+            "default": true
+          }
+        },
+        "disposition": [
+          "owner",
+          "public_only"
+        ]
+      },
+      "exports": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description"
+          },
+          "private": {
+            "type": "booelan",
+            "description": "Is Private"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL"
+          },
+          "html_url": {
+            "type": "string",
+            "description": "Site URL"
+          },
+          "watchers_count": {
+            "type": "integer",
+            "description": "# Watchers"
+          },
+          "stargazers_count": {
+            "type": "integer",
+            "description": "# Stargazers"
+          },
+          "open_issues_count": {
+            "type": "integer",
+            "description": "# Issues"
+          }
+        }
+      },
+      "imports": {
+        "properties": {}
+      }
+    },
+    "new_org_repos": {
+      "title": "Organization Repository Created",
+      "description": "A new Organization Repository has been created",
+      "trigger": "poll",
+      "config": {
+        "properties": {
+          "organization": {
+            "type": "string",
+            "description": "Organization Name"
+          },
+          "public_only": {
+            "type": "boolean",
+            "description": "Public Repositories only",
+            "default": true
+          }
+        },
+        "disposition": [
+          "organization",
+          "public_only"
+        ]
+      },
+      "exports": {
+        "properties": {
+          "organization": {
+            "type": "string",
+            "description": "Organization Name"
+          },
+          "id": {
+            "type": "string",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description"
+          },
+          "private": {
+            "type": "booelan",
+            "description": "Is Private"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL"
+          },
+          "html_url": {
+            "type": "string",
+            "description": "Site URL"
+          },
+          "watchers_count": {
+            "type": "integer",
+            "description": "# Watchers"
+          },
+          "stargazers_count": {
+            "type": "integer",
+            "description": "# Stargazers"
+          },
+          "open_issues_count": {
+            "type": "integer",
+            "description": "# Issues"
+          }
+        }
+      },
+      "imports": {
+        "properties": {}
+      }
+    },
+    "get_repository": {
+      "title": "Get Repository Attributes",
+      "description": "Fetches attributes for a given repository",
+      "trigger": "invoke",
+      "config": {
+        "properties": {},
+        "definitions": {}
+      },
+      "exports": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description"
+          },
+          "private": {
+            "type": "booelan",
+            "description": "Is Private"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL"
+          },
+          "html_url": {
+            "type": "string",
+            "description": "Site URL"
+          },
+          "watchers_count": {
+            "type": "integer",
+            "description": "# Watchers"
+          },
+          "stargazers_count": {
+            "type": "integer",
+            "description": "# Stargazers"
+          },
+          "open_issues_count": {
+            "type": "integer",
+            "description": "# Issues"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "owner": {
+            "type": "string",
+            "description": "Owner Name"
+          },
+          "repo": {
+            "type": "string",
+            "description": "Repo Name"
+          }
+        },
+        "required": [
+          "owner",
+          "repo"
+        ],
+        "disposition": [
+          "owner",
+          "repo"
+        ]
+      }
+    },
+    "get_team": {
+      "title": "Get A Team",
+      "description": "Fetches A Team By ID",
+      "trigger": "invoke",
+      "config": {
+        "properties": {},
+        "definitions": {}
+      },
+      "exports": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Team URL"
+          },
+          "name": {
+            "type": "string",
+            "description": "Team Name"
+          },
+          "id": {
+            "type": "string",
+            "description": "Team ID"
+          },
+          "permission": {
+            "type": "string",
+            "description": "Team Permission"
+          },
+          "repos_count": {
+            "type": "integer",
+            "description": "# Team Repos"
+          },
+          "members_count": {
+            "type": "integer",
+            "description": "# Team Members"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Team ID"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "disposition": [
+          "id"
+        ]
+      }
+    },
+    "get_org_teams": {
+      "title": "Get Teams For Organization",
+      "description": "Fetches All Teams for a given Organization",
+      "trigger": "invoke",
+      "config": {
+        "properties": {},
+        "definitions": {}
+      },
+      "exports": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Org URL"
+          },
+          "name": {
+            "type": "string",
+            "description": "Org Name"
+          },
+          "id": {
+            "type": "string",
+            "description": "Org ID"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "organization": {
+            "type": "string",
+            "description": "Organization Name"
+          }
+        },
+        "required": [
+          "organization"
+        ],
+        "disposition": [
+          "organization"
+        ]
+      }
+    },
+    "add_team_member": {
+      "title": "Add Team Member",
+      "description": "Adds a Team Member (username) to an Organization ID",
+      "trigger": "invoke",
+      "config": {
+        "properties": {},
+        "definitions": {}
+      },
+      "exports": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Response Status"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Team ID"
+          },
+          "username": {
+            "type": "string",
+            "description": "User Name"
+          }
+        },
+        "required": [
+          "id",
+          "username"
+        ],
+        "disposition": [
+          "id",
+          "username"
+        ]
+      }
+    },
+    "add_team_repo": {
+      "title": "Add Team Repo",
+      "description": "Adds a Repository to an Organizations Team",
+      "trigger": "invoke",
+      "config": {
+        "properties": {},
+        "definitions": {}
+      },
+      "exports": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Response Status"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Team ID"
+          },
+          "org": {
+            "type": "string",
+            "description": "Organization Name"
+          },
+          "repo": {
+            "type": "string",
+            "description": "Repo Name"
+          }
+        },
+        "required": [
+          "id",
+          "repo",
+          "org"
+        ],
+        "disposition": [
+          "id",
+          "repo",
+          "org"
+        ]
+      }
+    },
+    "gist_create": {
+      "title": "Create a Gist",
+      "description": "Create a Gist",
+      "trigger": "invoke",
+      "config": {
+        "properties": {
+          "public": {
+            "type": "boolean",
+            "description": "Public Gist",
+            "default": false
+          }
+        },
+        "disposition": [
+          "public"
+        ]
+      },
+      "exports": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL"
+          },
+          "html_url": {
+            "type": "string",
+            "description": "HTML URL"
+          },
+          "number": {
+            "type": "string",
+            "description": "Number"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title"
+          },
+          "body": {
+            "type": "string",
+            "description": "Body"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Created At"
+          }
+        }
+      },
+      "imports": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Description"
+          },
+          "file_name": {
+            "type": "string",
+            "description": "File Name"
+          },
+          "content": {
+            "type": "string",
+            "description": "File Content"
+          }
+        },
+        "required": [
+          "description",
+          "file_name",
+          "content"
+        ],
+        "disposition": [
+          "description",
+          "file_name",
+          "content"
+        ]
+      }
+    }
+  },
+  "dataSources": {
+    "track_repos": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "renderable": false,
+          "writable": false,
+          "unique": true
+        },
+        "owner_id": {
+          "type": "string",
+          "renderable": false,
+          "writable": false
+        },
+        "created": {
+          "type": "string",
+          "renderable": true,
+          "writable": false
+        },
+        "last_update": {
+          "type": "string",
+          "renderable": true,
+          "writable": false
+        },
+        "channel_id": {
+          "type": "string",
+          "renderable": true,
+          "writable": false
+        },
+        "repo_id": {
+          "type": "string",
+          "renderable": true,
+          "writable": false
+        },
+        "data": {
+          "type": "mixed",
+          "rendrable": true,
+          "writable": true
+        }
+      },
+      "keys": [
+        "id"
+      ]
+    }
+  }
+}
