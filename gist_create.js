@@ -20,76 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function GistCreate(podConfig) {
-  this.name = 'gist_create';
-  this.title = 'Create a Gist',
-  this.description = 'Create a Gist',
-  this.trigger = false;
-  this.singleton = false;
-  this.auto = false;
-  this.podConfig = podConfig;
-}
+function GistCreate() {}
 
 GistCreate.prototype = {};
-
-GistCreate.prototype.getSchema = function() {
-  return {
-    "config": {
-      "properties" : {
-        "public" : {
-          "type" :  "boolean",
-          "description" : "Public Gist",
-          "default" : false
-        }
-      }
-    },
-    "imports": {
-      "properties" : {
-        "description" : {
-          "type" :  "string",
-          "description" : "Description"
-        },
-        "file_name" : {
-          "type" :  "string",
-          "description" : "File Name"
-        },
-        "content" : {
-          "type" :  "string",
-          "description" : "File Content"
-        }
-      },
-      "required" : [ "description", "file_name", "content" ]
-    },
-    "exports": {
-      "properties" : {
-        "url" : {
-          "type" : "string",
-          "description" : "URL"
-        },
-        "html_url" : {
-          "type" : "string",
-          "description" : "HTML URL"
-        },
-        "number" : {
-          "type" : "string",
-          "description" : "Number"
-        },
-        "title" : {
-          "type" : "string",
-          "description" : "Title"
-        },
-        "body" : {
-          "type" : "string",
-          "description" : "Body"
-        },
-        "created_at" : {
-          "type" : "string",
-          "description" : "Created At"
-        }
-      }
-    }
-  }
-}
 
 GistCreate.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var pod = this.pod,

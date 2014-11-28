@@ -20,59 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function GetTeam(podConfig) {
-  this.name = 'get_team';
-  this.title = 'Get A Team',
-  this.description = 'Fetches A Team By ID',
-  this.trigger = false;
-  this.singleton = true;
-  this.auto = false;
-  this.podConfig = podConfig;
-}
+function GetTeam() {}
 
 GetTeam.prototype = {};
-
-GetTeam.prototype.getSchema = function() {
-  return {
-    "imports": {
-      "properties" : {
-        "id" : {
-          "type" :  "string",
-          "description" : "Team ID"
-        }
-      },
-      "required" : [ "id" ]
-    },
-    "exports": {
-      "properties" : {
-        "url" : {
-          "type" : "string",
-          "description" : "Team URL"
-        },
-        "name" : {
-          "type" : "string",
-          "description" : "Team Name"
-        },
-        "id" : {
-          "type" : "string",
-          "description" : "Team ID"
-        },
-        "permission" : {
-          "type" : "string",
-          "description" : "Team Permission"
-        },
-        "repos_count" : {
-          "type" : "integer",
-          "description" : "# Team Repos"
-        },
-        "members_count" : {
-          "type" : "integer",
-          "description" : "# Team Members"
-        }
-      }
-    }
-  }
-}
 
 GetTeam.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
@@ -82,12 +32,10 @@ GetTeam.prototype.invoke = function(imports, channel, sysImports, contentParts, 
     log = resource.log,
     url;
 
-  if (imports.id) {
-    url = 'https://api.github.com/teams/'+ imports.id +'?access_token=' + sysImports.auth.oauth.token;
-    resource._httpGet(url, function(err, repo, headers) {
-      next(err, repo);
-    });
-  }
+  url = 'https://api.github.com/teams/'+ imports.id +'?access_token=' + sysImports.auth.oauth.token;
+  resource._httpGet(url, function(err, repo, headers) {
+    next(err, repo);
+  });
 }
 
 // -----------------------------------------------------------------------------
