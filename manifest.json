@@ -2,7 +2,7 @@
   "name": "github",
   "title": "Github",
   "description": "GitHub is a web-based hosting service for software development projects that use the Git revision control system",
-  "url": "",
+  "url": "https://github.com",
   "trackDuplicates": false,
   "config": {
     "oauth": {
@@ -26,6 +26,7 @@
     "issue_create": {
       "title": "Create an Issue",
       "description": "Create an Issue for the target repository",
+      "doc_ref" : "https://developer.github.com/v3/issues/#create-an-issue",
       "trigger": "invoke",
       "config": {
         "properties": {
@@ -93,8 +94,10 @@
       }
     },
     "new_user_repos": {
+      "disabled" : true,
       "title": "User Repository Created",
       "description": "A new User Repository has been created",
+      "doc_ref" : "",
       "trigger": "poll",
       "config": {
         "properties": {
@@ -158,8 +161,10 @@
       }
     },
     "new_org_repos": {
+      "disabled" : true,
       "title": "Organization Repository Created",
       "description": "A new Organization Repository has been created",
+      "doc_ref" : "",
       "trigger": "poll",
       "config": {
         "properties": {
@@ -229,6 +234,7 @@
     "get_repository": {
       "title": "Get Repository Attributes",
       "description": "Fetches attributes for a given repository",
+      "doc_ref" : "https://developer.github.com/v3/repos/#get",
       "trigger": "invoke",
       "config": {
         "properties": {},
@@ -298,6 +304,7 @@
     "get_team": {
       "title": "Get A Team",
       "description": "Fetches A Team By ID",
+      "doc_ref" : "",
       "trigger": "invoke",
       "config": {
         "properties": {},
@@ -349,6 +356,7 @@
     "get_org_teams": {
       "title": "Get Teams For Organization",
       "description": "Fetches All Teams for a given Organization",
+      "doc_ref" : "",
       "trigger": "invoke",
       "config": {
         "properties": {},
@@ -388,6 +396,7 @@
     "add_team_member": {
       "title": "Add Team Member",
       "description": "Adds a Team Member (username) to an Organization ID",
+      "doc_ref" : "",
       "trigger": "invoke",
       "config": {
         "properties": {},
@@ -425,6 +434,7 @@
     "add_team_repo": {
       "title": "Add Team Repo",
       "description": "Adds a Repository to an Organizations Team",
+      "doc_ref" : "",
       "trigger": "invoke",
       "config": {
         "properties": {},
@@ -468,6 +478,7 @@
     "gist_create": {
       "title": "Create a Gist",
       "description": "Create a Gist",
+      "doc_ref" : "",
       "trigger": "invoke",
       "config": {
         "properties": {

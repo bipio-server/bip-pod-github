@@ -20,84 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function OrgRepoCreated(podConfig) {
-  this.name = 'new_org_repos';
-  this.title = 'Organization Repository Created',
-  this.description = 'A new Organization Repository has been created',
-  this.trigger = true; // this action can trigger
-  this.singleton = false; // only 1 instance per account (can auto install)
-  this.auto = false; // no config, not a singleton but can auto-install anyhow
-  this.podConfig = podConfig; // general system level config for this pod (transports etc)
-}
+function OrgRepoCreated() {}
 
 OrgRepoCreated.prototype = {};
-
-OrgRepoCreated.prototype.getSchema = function() {
-  return {
-    "config": {
-      "properties" : {
-        "organization" : {
-          "type" :  "string",
-          "description" : "Organization Name"
-        },
-
-        "public_only" : {
-          "type" :  "boolean",
-          "description" : "Public Repositories only",
-          "default" : true
-        }
-      }
-    },
-    "imports": {
-      "properties" : {
-    }
-    },
-    "exports": {
-      "properties" : {
-        "organization" : {
-          "type" : "string",
-          "description" : "Organization Name"
-        },
-        "id" : {
-          "type" : "string",
-          "description" : "ID"
-        },
-        "name" : {
-          "type" : "string",
-          "description" : "Name"
-        },
-        "description" : {
-          "type" : "string",
-          "description" : "Description"
-        },
-        "private" : {
-          "type" : "booelan",
-          "description" : "Is Private"
-        },
-        "url" : {
-          "type" : "string",
-          "description" : "URL"
-        },
-        "html_url" : {
-          "type" : "string",
-          "description" : "Site URL"
-        },
-        "watchers_count" : {
-          "type" : "integer",
-          "description" : "# Watchers"
-        },
-        "stargazers_count" : {
-          "type" : "integer",
-          "description" : "# Stargazers"
-        },
-        "open_issues_count" : {
-          "type" : "integer",
-          "description" : "# Issues"
-        }
-      }
-    }
-  }
-}
 
 OrgRepoCreated.prototype.getUrl = function(channel, auth) {
   var path = '/user/repos', type = 'public';

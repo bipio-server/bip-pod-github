@@ -20,80 +20,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function UserRepoCreated(podConfig) {
-  this.name = 'new_user_repos';
-  this.title = 'User Repository Created',
-  this.description = 'A new User Repository has been created',
-  this.trigger = true; // this action can trigger
-  this.singleton = false; // only 1 instance per account (can auto install)
-  this.auto = false; // no config, not a singleton but can auto-install anyhow
-  this.podConfig = podConfig; // general system level config for this pod (transports etc)
-}
+function UserRepoCreated() {}
 
 UserRepoCreated.prototype = {};
 
-UserRepoCreated.prototype.getSchema = function() {
-  return {
-    "config": {
-      "properties" : {
-        "owner" : {
-          "type" :  "string",
-          "description" : "Owner Name, leave blank to track your own repositories"
-        },
-
-        "public_only" : {
-          "type" :  "boolean",
-          "description" : "Public Repositories only",
-          "default" : true
-        }
-      }
-    },
-    "imports": {
-      "properties" : {
-    }
-    },
-    "exports": {
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "description" : "ID"
-        },
-        "name" : {
-          "type" : "string",
-          "description" : "Name"
-        },
-        "description" : {
-          "type" : "string",
-          "description" : "Description"
-        },
-        "private" : {
-          "type" : "booelan",
-          "description" : "Is Private"
-        },
-        "url" : {
-          "type" : "string",
-          "description" : "URL"
-        },
-        "html_url" : {
-          "type" : "string",
-          "description" : "Site URL"
-        },
-        "watchers_count" : {
-          "type" : "integer",
-          "description" : "# Watchers"
-        },
-        "stargazers_count" : {
-          "type" : "integer",
-          "description" : "# Stargazers"
-        },
-        "open_issues_count" : {
-          "type" : "integer",
-          "description" : "# Issues"
-        }
-      }
-    }
-  }
-}
 
 UserRepoCreated.prototype.getUrl = function(channel, auth) {
   var path = '/user/repos', type = 'public';

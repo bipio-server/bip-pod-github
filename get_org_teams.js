@@ -20,47 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function GetOrgTeams(podConfig) {
-  this.name = 'get_org_teams';
-  this.title = 'Get Teams For Organization',
-  this.description = 'Fetches All Teams for a given Organization',
-  this.trigger = false;
-  this.singleton = true;
-  this.auto = false;
-  this.podConfig = podConfig;
-}
+function GetOrgTeams() {}
 
 GetOrgTeams.prototype = {};
-
-GetOrgTeams.prototype.getSchema = function() {
-  return {
-    "imports": {
-      "properties" : {
-        "organization" : {
-          "type" :  "string",
-          "description" : "Organization Name"
-        }
-      },
-      "required" : [ "organization" ]
-    },
-    "exports": {
-      "properties" : {
-        "url" : {
-          "type" : "string",
-          "description" : "Org URL"
-        },
-        "name" : {
-          "type" : "string",
-          "description" : "Org Name"
-        },
-        "id" : {
-          "type" : "string",
-          "description" : "Org ID"
-        }
-      }
-    }
-  }
-}
 
 GetOrgTeams.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
@@ -70,12 +32,10 @@ GetOrgTeams.prototype.invoke = function(imports, channel, sysImports, contentPar
     log = resource.log,
     url;
 
-  if (imports.organization) {
-    url = 'https://api.github.com/orgs/'+ imports.organization +'/teams?access_token=' + sysImports.auth.oauth.token;
-    resource._httpGet(url, function(err, repo, headers) {
-      next(err, repo);
-    });
-  }
+  url = 'https://api.github.com/orgs/'+ imports.organization +'/teams?access_token=' + sysImports.auth.oauth.token;
+  resource._httpGet(url, function(err, repo, headers) {
+    next(err, repo);
+  });
 }
 
 // -----------------------------------------------------------------------------

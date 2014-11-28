@@ -19,42 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 var Pod = require('bip-pod'),
-Github = new Pod({
-  name : 'github',
-  title : 'Github',
-  description : 'GitHub is a web-based hosting service for software development projects that use the Git revision control system',
-  authType : 'oauth',
-  passportStrategy : require('passport-github').Strategy,
-  config : {
-    "oauth": {
-      "clientID" : "",
-      "clientSecret" : "",
-      "callbackURL" : "/rpc/oauth/github/cb",
-      "scopes" : [
-      "gist",
-      "notifications",
-      "repo:status",
-      "repo",
-      "read:org"
-      ]
-    }
-  },
-  dataSources : [
-    require('./models/track_repos')
-  ]
-});
-
-
-
-Github.add(require('./issue_create.js'));
-Github.add(require('./get_repositories.js'));
-Github.add(require('./get_repositories_org.js'));
-Github.add(require('./get_repository.js'));
-Github.add(require('./get_team.js'));
-Github.add(require('./get_org_teams.js'));
-Github.add(require('./add_team_member.js'));
-Github.add(require('./add_team_repo.js'));
-Github.add(require('./gist_create.js'));
+  Github = new Pod();
 
 // -----------------------------------------------------------------------------
 module.exports = Github;

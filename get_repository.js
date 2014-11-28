@@ -20,76 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function Repo(podConfig) {
-  this.name = 'get_repository';
-  this.title = 'Get Repository Attributes',
-  this.description = 'Fetches attributes for a given repository',
-  this.trigger = false; // this action can trigger
-  this.singleton = false; // only 1 instance per account (can auto install)
-  this.auto = false; // no config, not a singleton but can auto-install anyhow
-  this.podConfig = podConfig; // general system level config for this pod (transports etc)
-}
+function Repo() {}
 
 Repo.prototype = {};
-
-Repo.prototype.getSchema = function() {
-  return {
-    "imports": {
-      "properties" : {
-        "owner" : {
-          "type" :  "string",
-          "description" : "Owner Name"
-        },
-
-        "repo" : {
-          "type" :  "string",
-          "description" : "Repo Name"
-        }
-      },
-      "required" : [ "owner", "repo" ]
-    },
-    "exports": {
-      "properties" : {
-        "id" : {
-          "type" : "string",
-          "description" : "ID"
-        },
-        "name" : {
-          "type" : "string",
-          "description" : "Name"
-        },
-        "description" : {
-          "type" : "string",
-          "description" : "Description"
-        },
-        "private" : {
-          "type" : "booelan",
-          "description" : "Is Private"
-        },
-        "url" : {
-          "type" : "string",
-          "description" : "URL"
-        },
-        "html_url" : {
-          "type" : "string",
-          "description" : "Site URL"
-        },
-        "watchers_count" : {
-          "type" : "integer",
-          "description" : "# Watchers"
-        },
-        "stargazers_count" : {
-          "type" : "integer",
-          "description" : "# Stargazers"
-        },
-        "open_issues_count" : {
-          "type" : "integer",
-          "description" : "# Issues"
-        }
-      }
-    }
-  }
-}
 
 Repo.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
@@ -99,12 +32,11 @@ Repo.prototype.invoke = function(imports, channel, sysImports, contentParts, nex
     log = resource.log,
     url;
 
-  if (imports.owner && imports.repo) {
-    url = 'https://api.github.com/repos/'+ imports.owner +'/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
-    resource._httpGet(url, function(err, repo, headers) {
-      next(err, repo);
-    });
-  }
+  url = 'https://api.github.com/repos/'+ imports.owner +'/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
+  resource._httpGet(url, function(err, repo, headers) {
+    next(err, repo);
+  });
+
 }
 
 // -----------------------------------------------------------------------------

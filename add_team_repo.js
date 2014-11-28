@@ -20,47 +20,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function AddTeamRepo(podConfig) {
-  this.name = 'add_team_repo';
-  this.title = 'Add Team Repo',
-  this.description = 'Adds a Repository to an Organizations Team',
-  this.trigger = false;
-  this.singleton = true;
-  this.auto = false;
-  this.podConfig = podConfig;
-}
+function AddTeamRepo() {}
 
 AddTeamRepo.prototype = {};
-
-AddTeamRepo.prototype.getSchema = function() {
-  return {
-    "imports": {
-      "properties" : {
-        "id" : {
-          "type" :  "string",
-          "description" : "Team ID"
-        },
-        "org" : {
-          "type" :  "string",
-          "description" : "Organization Name"
-        },
-        "repo" : {
-          "type" :  "string",
-          "description" : "Repo Name"
-        }
-      },
-      "required" : [ "id", "repo", "org" ]
-    },
-    "exports": {
-      "properties" : {
-        "status" : {
-          "type" : "string",
-          "description" : "Response Status"
-        }
-      }
-    }
-  }
-}
 
 AddTeamRepo.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
@@ -70,12 +32,11 @@ AddTeamRepo.prototype.invoke = function(imports, channel, sysImports, contentPar
     log = resource.log,
     url;
 
-  if (imports.id && imports.repo && imports.org) {
-    url = 'https://api.github.com/teams/'+ imports.id +'/repos/' + imports.org + '/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
-    resource._httpPut(url, null, function(err, repo, headers) {
-      next(err, { status : headers.status });
-    });
-  }
+  url = 'https://api.github.com/teams/'+ imports.id +'/repos/' + imports.org + '/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
+  resource._httpPut(url, null, function(err, repo, headers) {
+    next(err, { status : headers.status });
+  });
+
 }
 
 // -----------------------------------------------------------------------------
