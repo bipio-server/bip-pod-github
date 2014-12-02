@@ -32,7 +32,7 @@ GetOrgTeams.prototype.invoke = function(imports, channel, sysImports, contentPar
     log = resource.log,
     url;
 
-  url = 'https://api.github.com/orgs/'+ imports.organization +'/teams?access_token=' + sysImports.auth.oauth.token;
+  url = 'https://api.github.com/orgs/'+ imports.organization +'/teams?access_token=' + sysImports.auth.oauth.access_token;
   resource._httpGet(url, function(err, repo, headers) {
     next(err, repo);
   });

@@ -27,7 +27,7 @@ IssueCreate.prototype = {};
 IssueCreate.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var pod = this.pod,
     resource = this.$resource,
-    url = 'https://api.github.com/repos/' + channel.config.owner + '/' + channel.config.repository + '/issues?access_token=' + sysImports.auth.oauth.token
+    url = 'https://api.github.com/repos/' + channel.config.owner + '/' + channel.config.repository + '/issues?access_token=' + sysImports.auth.oauth.access_token;
 
   resource._httpPost(
     url,

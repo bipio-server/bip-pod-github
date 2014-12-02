@@ -32,7 +32,7 @@ AddTeamRepo.prototype.invoke = function(imports, channel, sysImports, contentPar
     log = resource.log,
     url;
 
-  url = 'https://api.github.com/teams/'+ imports.id +'/repos/' + imports.org + '/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
+  url = 'https://api.github.com/teams/'+ imports.id +'/repos/' + imports.org + '/' + imports.repo + '?access_token=' + sysImports.auth.oauth.access_token;
   resource._httpPut(url, null, function(err, repo, headers) {
     next(err, { status : headers.status });
   });

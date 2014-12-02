@@ -27,7 +27,7 @@ GistCreate.prototype = {};
 GistCreate.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var pod = this.pod,
     resource = this.$resource,
-    url = 'https://api.github.com/gists?access_token=' + sysImports.auth.oauth.token
+    url = 'https://api.github.com/gists?access_token=' + sysImports.auth.oauth.access_token
 
   var struct = {
     "description" : imports.description,

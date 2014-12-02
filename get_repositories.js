@@ -36,7 +36,7 @@ UserRepoCreated.prototype.getUrl = function(channel, auth) {
     type = 'all';
   }
 
-  return 'https://api.github.com' + path + '?sort=created&type=' + type + '&access_token=' + auth.oauth.token
+  return 'https://api.github.com' + path + '?sort=created&type=' + type + '&access_token=' + auth.oauth.access_token
 }
 
 UserRepoCreated.prototype.setup = function(channel, accountInfo, next) {

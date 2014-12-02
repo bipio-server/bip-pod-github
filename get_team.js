@@ -32,7 +32,7 @@ GetTeam.prototype.invoke = function(imports, channel, sysImports, contentParts, 
     log = resource.log,
     url;
 
-  url = 'https://api.github.com/teams/'+ imports.id +'?access_token=' + sysImports.auth.oauth.token;
+  url = 'https://api.github.com/teams/'+ imports.id +'?access_token=' + sysImports.auth.oauth.access_token;
   resource._httpGet(url, function(err, repo, headers) {
     next(err, repo);
   });

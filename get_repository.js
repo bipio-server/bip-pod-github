@@ -32,7 +32,7 @@ Repo.prototype.invoke = function(imports, channel, sysImports, contentParts, nex
     log = resource.log,
     url;
 
-  url = 'https://api.github.com/repos/'+ imports.owner +'/' + imports.repo + '?access_token=' + sysImports.auth.oauth.token;
+  url = 'https://api.github.com/repos/'+ imports.owner +'/' + imports.repo + '?access_token=' + sysImports.auth.oauth.access_token;
   resource._httpGet(url, function(err, repo, headers) {
     next(err, repo);
   });
