@@ -170,7 +170,6 @@
       }
     },
     "new_org_repos": {
-      "disabled": true,
       "title": "Organization Repository Created",
       "description": "A new Organization Repository has been created",
       "doc_ref": "",
