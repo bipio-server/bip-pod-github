@@ -41,11 +41,11 @@
         "properties": {
           "owner": {
             "type": "string",
-            "description": "Owner Name"
+            "title": "Owner Name"
           },
           "repository": {
             "type": "string",
-            "description": "Repository Name"
+            "title": "Repository Name"
           }
         },
         "disposition": [
@@ -57,27 +57,27 @@
         "properties": {
           "url": {
             "type": "string",
-            "description": "URL"
+            "title": "URL"
           },
           "html_url": {
             "type": "string",
-            "description": "HTML URL"
+            "title": "HTML URL"
           },
           "number": {
             "type": "string",
-            "description": "Number"
+            "title": "Number"
           },
           "title": {
             "type": "string",
-            "description": "Title"
+            "title": "Title"
           },
           "body": {
             "type": "string",
-            "description": "Body"
+            "title": "Body"
           },
           "created_at": {
             "type": "string",
-            "description": "Created At"
+            "title": "Created At"
           }
         }
       },
@@ -85,11 +85,11 @@
         "properties": {
           "title": {
             "type": "string",
-            "description": "Title"
+            "title": "Title"
           },
           "body": {
             "type": "string",
-            "description": "Body"
+            "title": "Body"
           }
         },
         "required": [
@@ -112,12 +112,12 @@
         "properties": {
           "owner": {
             "type": "string",
-            "description": "Owner Name, leave blank to track your own repositories"
+            "title": "Owner Name, leave blank to track your own repositories"
           },
           "public_only": {
             "type": "boolean",
-            "description": "Public Repositories only",
-            "default": true
+            "default": true,
+            "title": "Public Repositories only"
           }
         },
         "disposition": [
@@ -129,39 +129,39 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "ID"
+            "title": "ID"
           },
           "name": {
             "type": "string",
-            "description": "Name"
+            "title": "Name"
           },
           "description": {
             "type": "string",
-            "description": "Description"
+            "title": "Description"
           },
           "private": {
             "type": "booelan",
-            "description": "Is Private"
+            "title": "Is Private"
           },
           "url": {
             "type": "string",
-            "description": "URL"
+            "title": "URL"
           },
           "html_url": {
             "type": "string",
-            "description": "Site URL"
+            "title": "Site URL"
           },
           "watchers_count": {
             "type": "integer",
-            "description": "# Watchers"
+            "title": "# Watchers"
           },
           "stargazers_count": {
             "type": "integer",
-            "description": "# Stargazers"
+            "title": "# Stargazers"
           },
           "open_issues_count": {
             "type": "integer",
-            "description": "# Issues"
+            "title": "# Issues"
           }
         }
       },
@@ -178,12 +178,12 @@
         "properties": {
           "organization": {
             "type": "string",
-            "description": "Organization Name"
+            "title": "Organization Name"
           },
           "public_only": {
             "type": "boolean",
-            "description": "Public Repositories only",
-            "default": true
+            "default": true,
+            "title": "Public Repositories only"
           }
         },
         "disposition": [
@@ -195,43 +195,43 @@
         "properties": {
           "organization": {
             "type": "string",
-            "description": "Organization Name"
+            "title": "Organization Name"
           },
           "id": {
             "type": "string",
-            "description": "ID"
+            "title": "ID"
           },
           "name": {
             "type": "string",
-            "description": "Name"
+            "title": "Name"
           },
           "description": {
             "type": "string",
-            "description": "Description"
+            "title": "Description"
           },
           "private": {
             "type": "booelan",
-            "description": "Is Private"
+            "title": "Is Private"
           },
           "url": {
             "type": "string",
-            "description": "URL"
+            "title": "URL"
           },
           "html_url": {
             "type": "string",
-            "description": "Site URL"
+            "title": "Site URL"
           },
           "watchers_count": {
             "type": "integer",
-            "description": "# Watchers"
+            "title": "# Watchers"
           },
           "stargazers_count": {
             "type": "integer",
-            "description": "# Stargazers"
+            "title": "# Stargazers"
           },
           "open_issues_count": {
             "type": "integer",
-            "description": "# Issues"
+            "title": "# Issues"
           }
         }
       },
@@ -252,39 +252,39 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "ID"
+            "title": "ID"
           },
           "name": {
             "type": "string",
-            "description": "Name"
+            "title": "Name"
           },
           "description": {
             "type": "string",
-            "description": "Description"
+            "title": "Description"
           },
           "private": {
             "type": "booelan",
-            "description": "Is Private"
+            "title": "Is Private"
           },
           "url": {
             "type": "string",
-            "description": "URL"
+            "title": "URL"
           },
           "html_url": {
             "type": "string",
-            "description": "Site URL"
+            "title": "Site URL"
           },
           "watchers_count": {
             "type": "integer",
-            "description": "# Watchers"
+            "title": "# Watchers"
           },
           "stargazers_count": {
             "type": "integer",
-            "description": "# Stargazers"
+            "title": "# Stargazers"
           },
           "open_issues_count": {
             "type": "integer",
-            "description": "# Issues"
+            "title": "# Issues"
           }
         }
       },
@@ -292,11 +292,11 @@
         "properties": {
           "owner": {
             "type": "string",
-            "description": "Owner Name"
+            "title": "Owner Name"
           },
           "repo": {
             "type": "string",
-            "description": "Repo Name"
+            "title": "Repo Name"
           }
         },
         "required": [
@@ -322,27 +322,27 @@
         "properties": {
           "url": {
             "type": "string",
-            "description": "Team URL"
+            "title": "Team URL"
           },
           "name": {
             "type": "string",
-            "description": "Team Name"
+            "title": "Team Name"
           },
           "id": {
             "type": "string",
-            "description": "Team ID"
+            "title": "Team ID"
           },
           "permission": {
             "type": "string",
-            "description": "Team Permission"
+            "title": "Team Permission"
           },
           "repos_count": {
             "type": "integer",
-            "description": "# Team Repos"
+            "title": "# Team Repos"
           },
           "members_count": {
             "type": "integer",
-            "description": "# Team Members"
+            "title": "# Team Members"
           }
         }
       },
@@ -350,7 +350,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Team ID"
+            "title": "Team ID"
           }
         },
         "required": [
@@ -374,15 +374,15 @@
         "properties": {
           "url": {
             "type": "string",
-            "description": "Org URL"
+            "title": "Org URL"
           },
           "name": {
             "type": "string",
-            "description": "Org Name"
+            "title": "Org Name"
           },
           "id": {
             "type": "string",
-            "description": "Org ID"
+            "title": "Org ID"
           }
         }
       },
@@ -390,7 +390,7 @@
         "properties": {
           "organization": {
             "type": "string",
-            "description": "Organization Name"
+            "title": "Organization Name"
           }
         },
         "required": [
@@ -414,7 +414,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "Response Status"
+            "title": "Response Status"
           }
         }
       },
@@ -422,11 +422,11 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Team ID"
+            "title": "Team ID"
           },
           "username": {
             "type": "string",
-            "description": "User Name"
+            "title": "User Name"
           }
         },
         "required": [
@@ -452,7 +452,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "Response Status"
+            "title": "Response Status"
           }
         }
       },
@@ -460,15 +460,15 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Team ID"
+            "title": "Team ID"
           },
           "org": {
             "type": "string",
-            "description": "Organization Name"
+            "title": "Organization Name"
           },
           "repo": {
             "type": "string",
-            "description": "Repo Name"
+            "title": "Repo Name"
           }
         },
         "required": [
@@ -492,8 +492,8 @@
         "properties": {
           "public": {
             "type": "boolean",
-            "description": "Public Gist",
-            "default": false
+            "default": false,
+            "title": "Public Gist"
           }
         },
         "disposition": [
@@ -504,27 +504,27 @@
         "properties": {
           "url": {
             "type": "string",
-            "description": "URL"
+            "title": "URL"
           },
           "html_url": {
             "type": "string",
-            "description": "HTML URL"
+            "title": "HTML URL"
           },
           "number": {
             "type": "string",
-            "description": "Number"
+            "title": "Number"
           },
           "title": {
             "type": "string",
-            "description": "Title"
+            "title": "Title"
           },
           "body": {
             "type": "string",
-            "description": "Body"
+            "title": "Body"
           },
           "created_at": {
             "type": "string",
-            "description": "Created At"
+            "title": "Created At"
           }
         }
       },
@@ -532,15 +532,15 @@
         "properties": {
           "description": {
             "type": "string",
-            "description": "Description"
+            "title": "Description"
           },
           "file_name": {
             "type": "string",
-            "description": "File Name"
+            "title": "File Name"
           },
           "content": {
             "type": "string",
-            "description": "File Content"
+            "title": "File Content"
           }
         },
         "required": [
