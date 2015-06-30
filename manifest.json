@@ -186,6 +186,9 @@
             "title": "Public Repositories only"
           }
         },
+        "required": [
+          "organization"
+        ],        
         "disposition": [
           "organization",
           "public_only"
@@ -233,19 +236,7 @@
             "type": "integer",
             "title": "# Issues"
           }
-        },
-        "disposition": [
-        	"organization",
-        	"id",
-        	"name",
-        	"description",
-        	"private",
-        	"url",
-        	"html_url",
-        	"watchers_count",
-        	"stargazers_count",
-        	"open_issues_count"
-        	]
+        }
       },
       "imports": {
         "properties": {}
