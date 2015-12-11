@@ -31,7 +31,7 @@ GistCreate.prototype.invoke = function(imports, channel, sysImports, contentPart
 
   var struct = {
     "description" : imports.description,
-    "public" : channel.config.public,
+    "public" : imports.public,
     "files" : {
     }
   }

@@ -186,6 +186,9 @@
             "title": "Public Repositories only"
           }
         },
+        "required": [
+          "organization"
+        ],        
         "disposition": [
           "organization",
           "public_only"

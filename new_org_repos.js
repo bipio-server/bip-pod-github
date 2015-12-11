@@ -25,13 +25,10 @@ function OrgRepoCreated() {}
 OrgRepoCreated.prototype = {};
 
 OrgRepoCreated.prototype.getUrl = function(channel, auth) {
-  var path = '/user/repos', type = 'public';
+  var path = '/orgs/' + imports.organization + '/repos', 
+    type = 'public';
 
-  if (channel.config.organization && '' !== channel.config.organization) {
-    path = '/orgs/' + channel.config.organization + '/repos'
-  }
-
-  if (!channel.config.public_only) {
+  if (!imports.public_only) {
     type = 'all';
   }
 
@@ -92,9 +89,8 @@ OrgRepoCreated.prototype.teardown = function(channel, accountInfo, next) {
       }
       next(err, modelName, null);
     }
-    );
+  );
 }
-
 
 OrgRepoCreated.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
