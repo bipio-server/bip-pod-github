@@ -21,5 +21,10 @@
 var Pod = require('bip-pod'),
   Github = new Pod();
 
+Github.profileReprOAuth = function(profile) {
+  return profile.name;
+}
+
+
 // -----------------------------------------------------------------------------
 module.exports = Github;
