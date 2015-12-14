@@ -24,8 +24,8 @@ function OrgRepoCreated() {}
 
 OrgRepoCreated.prototype = {};
 
-OrgRepoCreated.prototype.getUrl = function(channel, auth) {
-  var path = '/orgs/' + imports.organization + '/repos', 
+OrgRepoCreated.prototype.getUrl = function(imports, auth) {
+  var path = '/orgs/' + imports.organization + '/repos',
     type = 'public';
 
   if (!imports.public_only) {
@@ -35,104 +35,30 @@ OrgRepoCreated.prototype.getUrl = function(channel, auth) {
   return 'https://api.github.com' + path + '?sort=created&type=' + type + '&access_token=' + auth.oauth.access_token
 }
 
-OrgRepoCreated.prototype.setup = function(channel, accountInfo, next) {
-  var resource = this.$resource,
-  self = this,
-  dao = resource.dao,
-  log = resource.log,
-  modelName = resource.getDataSourceName('track_repos'),
-  url = this.getUrl(channel, accountInfo._setupAuth);
+OrgRepoCreated.prototype.trigger = function(imports, channel, sysImports, contentParts, next) {
+  var $resource = this.$resource;
 
-  resource._httpGet(url, function(err, repos, headers) {
-    var repoStruct;
-    if (!err) {
-      for (var i = 0; i < repos.length; i++) {
-        (function(repoStruct, accountInfo) {
-          var model = dao.modelFactory(modelName, repoStruct, accountInfo);
-          dao.create(model, function(err, result) {
-            if (err) {
-              log(err, channel, 'error');
-            }
-          }, accountInfo);
-        })({
-            channel_id : channel.id,
-            last_update : resource.moment(repos[i].updated_at).unix(),
-            owner_id : channel.owner_id,
-            repo_id : repos[i].id,
-            data : repos[i]
-          },
-          accountInfo
-        );
-
-      }
+  this.invoke(imports, channel, sysImports, contentParts, function(err, exports) {
+    if (err) {
+      next(err);
+    } else {
+      $resource.dupFilter(exports, 'id', channel, sysImports, function(err, repo) {
+        repo.organization = repo.owner.login;
+        next(err, repo);
+      });
     }
-    next(err, 'channel', channel);
   });
-}
-
-OrgRepoCreated.prototype.teardown = function(channel, accountInfo, next) {
-  var resource = this.$resource,
-  self = this,
-  dao = resource.dao,
-  log = resource.log,
-  modelName = resource.getDataSourceName('track_repos');
-
-  dao.removeFilter(
-    modelName,
-    {
-      channel_id : channel.id,
-      owner_id : channel.owner_id
-    },
-    function(err) {
-      if (err) {
-        log(err, channel, 'error');
-      }
-      next(err, modelName, null);
-    }
-  );
-}
+};
 
 OrgRepoCreated.prototype.invoke = function(imports, channel, sysImports, contentParts, next) {
   var self = this,
-    pod = this.pod,
     resource = this.$resource,
-    dao = resource.dao,
-    log = resource.log,
-    url = this.getUrl(channel, sysImports.auth),
-    modelName = this.$resource.getDataSourceName('track_repos');
+    url = this.getUrl(imports, sysImports.auth);
 
   resource._httpGet(url, function(err, repos, headers) {
     if (!err) {
       for (var i = 0; i < repos.length; i++) {
-        (function(channel, repo, next) {
-          dao.findFilter(modelName,
-            {
-              owner_id : channel.owner_id,
-              channel_id : channel.id,
-              repo_id : repos[i].id
-            }, function(err, results) {
-              if (err) {
-                next(err);
-              } else if (results.length === 0) {
-                var repoStruct = {
-                  channel_id : channel.id,
-                  last_update : resource.moment(repo.updated_at).unix(),
-                  owner_id : channel.owner_id,
-                  repo_id : repo.id,
-                  data : repo
-                };
-
-                var model = dao.modelFactory(modelName, repoStruct);
-                dao.create(model, function(err, result) {
-                  if (err) {
-                    log(err, channel, 'error');
-                  }
-                });
-                next(false, repo);
-              }
-            }
-          );
-        })(channel, repos[i], next);
+        next(false, repos[i]);
       }
     } else {
       next(err);
